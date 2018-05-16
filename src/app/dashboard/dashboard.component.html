@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Username Machines</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let machine of machines" (click)="onMachineSelect(machine.id)">
+      {{machine.name}}
+    </li>
+  </ul>
+</div>
