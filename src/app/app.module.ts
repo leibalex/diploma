@@ -20,7 +20,9 @@ import { MachinesComponent } from './machines/machines.component';
 import { MachineDetailComponent } from './machine-detail/machine-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagingControlButtonsComponent } from './managing-control-buttons/managing-control-buttons.component';
+import { CreateNewServerComponent } from './create-new-server/create-new-server.component';
 
+import { ReactiveFormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,12 +34,14 @@ import { ManagingControlButtonsComponent } from './managing-control-buttons/mana
     MachinesComponent,
     MachineDetailComponent,
     DashboardComponent,
-    ManagingControlButtonsComponent
+    ManagingControlButtonsComponent,
+    CreateNewServerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [WindowService, NavigationService, VirtualMachineService, MessageService, StateManagingService],
   bootstrap: [AppComponent]
