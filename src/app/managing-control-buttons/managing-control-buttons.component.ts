@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { VirtualMachineService } from '../services/virtual-machine.service';
 
 @Component({
   selector: 'app-managing-control-buttons',
@@ -9,7 +10,7 @@ export class ManagingControlButtonsComponent implements OnInit {
 
   @Input() machine;
 
-  constructor() { }
+  constructor(private readonly vmService: VirtualMachineService) { }
 
   ngOnInit() {
   }
@@ -18,12 +19,12 @@ export class ManagingControlButtonsComponent implements OnInit {
 
   }
 
-  stop(): void {
-
-  }
-
-  refresh(): void {
-
+  onDelete(): void {
+    this.vmService.deleteById(this.machine.id).subscribe((data) => {
+      console.log('Success deleted');
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 }

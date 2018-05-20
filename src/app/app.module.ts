@@ -22,7 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagingControlButtonsComponent } from './managing-control-buttons/managing-control-buttons.component';
 import { CreateNewServerComponent } from './create-new-server/create-new-server.component';
 
-import { ReactiveFormsModule }   from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

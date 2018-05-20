@@ -1,7 +1,16 @@
-li {
+.container{
+  text-align: center;
+}
+
+tr{
   margin-top: 10px;
 }
 
-li:hover {
+tr:hover{
   cursor: pointer;
+  background: lightgray;
+}
+
+.btn{
+  margin: 50px auto;
 }

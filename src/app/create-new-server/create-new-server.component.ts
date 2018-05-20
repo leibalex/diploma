@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder} from '@angular/forms';
+import { VirtualMachineService } from '../services/virtual-machine.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-create-new-server',
   templateUrl: './create-new-server.component.html',
@@ -12,7 +15,8 @@ export class CreateNewServerComponent implements OnInit {
   serverErrorMessage = '';
   isSuccessCreated = false;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(private readonly formBuilder: FormBuilder, private readonly vmService: VirtualMachineService,
+              private readonly router: Router) {}
 
   ngOnInit() {
     this.initForm();
@@ -47,6 +51,16 @@ export class CreateNewServerComponent implements OnInit {
     if (!this.checkForm()) {
       return;
     }
+
+    const {name, imageRef, flavorRef} = this.addServerForm.value;
+
+    this.vmService.create(name, imageRef, flavorRef).subscribe((data) => {
+      this.isSuccessCreated = true;
+      this.router.navigateByUrl('/user-account');
+    }, (error) => {
+      this.serverErrorMessage = 'Something went wrong, try again later!';
+      this.addServerForm.reset();
+    });
   }
 
 }

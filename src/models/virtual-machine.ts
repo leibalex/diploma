@@ -1,8 +1,7 @@
 export class VirtualMachine {
   id: number;
-  status: string;
-  name: string;
-  uuid: string;
-  imageName: string;
-  flavorName: string;
+  userId: string;
+  hostId: string;
+  accessIPv4: string;
+  accessIPv6: string;
 }

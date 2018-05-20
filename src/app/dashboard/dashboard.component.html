@@ -1,8 +1,22 @@
 <div class="container">
-  <h2>Username Machines</h2>
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let machine of machines" (click)="onMachineSelect(machine.id)">
-      {{machine.name}}
-    </li>
-  </ul>
+  <h2>Servers</h2>
+  <table class="table" *ngIf="servers.length" cellspacing="3">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>Host Id</th>
+        <th>Access IPv4</th>
+        <th>Access IPv6</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let server of servers" (click)="onServerSelect(server.id)">
+        <td>{{server.userId}}</td>
+        <td>{{server.hostId}}</td>
+        <td>{{server.accessIPv4}}</td>
+        <td>{{server.accessIPv6}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-danger btn-md" (click)="onCreateServerHandler()">Create new server</button>
 </div>

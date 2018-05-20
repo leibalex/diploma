@@ -11,21 +11,30 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  machines: VirtualMachine[] = [];
+  servers: VirtualMachine[] = [];
+  listOfKeys = [];
 
   constructor(private readonly vmService: VirtualMachineService,
               private readonly router: Router) { }
 
   ngOnInit() {
-    this.getMachines();
+    this.getServers();
+
+    if (this.servers.length) {
+      this.listOfKeys = Object.keys(this.servers[0]);
+    }
   }
 
-  getMachines(): void {
-    this.vmService.getMachines().subscribe(machines => this.machines = machines.slice(1, 5),
+  getServers(): void {
+    this.vmService.getServers().subscribe(servers => this.servers = servers,
       error => console.error(error));
   }
 
-  onMachineSelect(id: number): void {
+  onServerSelect(id: number): void {
     this.router.navigateByUrl(`/detail/${id}`);
+  }
+
+  onCreateServerHandler(): void {
+    this.router.navigateByUrl(`/create`);
   }
 }

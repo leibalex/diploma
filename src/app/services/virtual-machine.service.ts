@@ -7,13 +7,34 @@ import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class VirtualMachineService {
+  servers = VIRTUALMACHINES;
   constructor(private httpClient: HttpClient) {}
 
-  getMachines(): Observable<VirtualMachine[]> {
-      return of(VIRTUALMACHINES);
+  getServers(): Observable<VirtualMachine[]> {
+    console.log(...this.servers);
+      return of(this.servers);
   }
 
   getById(id: number): Observable<VirtualMachine> {
-    return of(VIRTUALMACHINES.find(machine => machine.id === id));
+    return of(this.servers.find(machine => machine.id === id));
+  }
+
+  deleteById(id: number): Observable<VirtualMachine[]> {
+    this.servers = this.servers.filter((server) => server.id !== id)
+    return of(this.servers);
+  }
+
+  create(name: string, imageRef: string, flavorRef: string): Observable<any> {
+    const newServer: VirtualMachine = {
+      id: 6,
+      userId: name,
+      hostId: imageRef,
+      accessIPv4: '1',
+      accessIPv6: '2'
+    };
+    this.servers = [...this.servers, newServer];
+    console.log(...this.servers);
+
+    return of(this.servers);
   }
 }
