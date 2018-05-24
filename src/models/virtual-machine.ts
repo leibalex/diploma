@@ -4,4 +4,5 @@ export class VirtualMachine {
   hostId: string;
   accessIPv4: string;
   accessIPv6: string;
+  status: boolean;
 }

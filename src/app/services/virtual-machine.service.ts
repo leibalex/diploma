@@ -30,7 +30,8 @@ export class VirtualMachineService {
       userId: name,
       hostId: imageRef,
       accessIPv4: '1',
-      accessIPv6: '2'
+      accessIPv6: '2',
+      status: false
     };
     this.servers = [...this.servers, newServer];
     console.log(...this.servers);

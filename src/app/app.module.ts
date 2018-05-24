@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatIconModule, MatProgressBarModule } from '@angular/material';
 
 import { WindowService } from './services/window.service';
 import { NavigationService } from './services/navigation.service';
@@ -23,6 +25,7 @@ import { ManagingControlButtonsComponent } from './managing-control-buttons/mana
 import { CreateNewServerComponent } from './create-new-server/create-new-server.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +38,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     MachineDetailComponent,
     DashboardComponent,
     ManagingControlButtonsComponent,
-    CreateNewServerComponent
+    CreateNewServerComponent,
+    MaterialFileUploadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressBarModule
   ],
   providers: [WindowService, NavigationService, VirtualMachineService, MessageService, StateManagingService],
   bootstrap: [AppComponent]
