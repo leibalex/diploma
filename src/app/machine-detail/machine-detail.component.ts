@@ -24,4 +24,8 @@ export class MachineDetailComponent implements OnInit {
     this.vmService.getById(id).subscribe(machine => this.machine = machine);
   }
 
+  onFileComplete(data: any) {
+    console.log(data);
+  }
+
 }

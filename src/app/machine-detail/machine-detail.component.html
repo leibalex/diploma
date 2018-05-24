@@ -4,10 +4,13 @@
       <img src="../../assets/vm.png" class="media-object" style="width:160px">
     </div>
     <div class="media-body">
-      <h4 class="media-heading">{{machine.name}}</h4>
-      <p>{{machine.imageName}}</p>
-      <p>{{machine.flavorName}}</p>
+      <h4 class="media-heading">{{machine.id}}</h4>
+      <p>{{machine.userId}}</p>
+      <p>{{machine.hostId}}</p>
     </div>
   </div>
   <app-managing-control-buttons [machine]="machine"></app-managing-control-buttons>
+  <div style="text-align: center">
+    <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
+  </div>
 </div>
