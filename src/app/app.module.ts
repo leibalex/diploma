@@ -9,7 +9,9 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatIconModule, MatProgressBarModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatProgressBarModule, MatPaginatorModule, MatSortModule, MatTableDataSource } from '@angular/material';
+import {CdkTableModule} from '@angular/cdk/table';
+
 
 import { WindowService } from './services/window.service';
 import { NavigationService } from './services/navigation.service';
@@ -26,6 +28,7 @@ import { CreateNewServerComponent } from './create-new-server/create-new-server.
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
+import { TableViewComponent } from './table-view/table-view.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { MaterialFileUploadComponent } from './material-file-upload/material-fil
     DashboardComponent,
     ManagingControlButtonsComponent,
     CreateNewServerComponent,
-    MaterialFileUploadComponent
+    MaterialFileUploadComponent,
+    TableViewComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,10 @@ import { MaterialFileUploadComponent } from './material-file-upload/material-fil
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatPaginatorModule,
+    MatSortModule,
+    CdkTableModule
   ],
   providers: [WindowService, NavigationService, VirtualMachineService, MessageService, StateManagingService],
   bootstrap: [AppComponent]
