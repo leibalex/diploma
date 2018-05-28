@@ -26,7 +26,7 @@ export class MaterialFileUploadComponent implements OnInit {
 
   @Output() complete = new EventEmitter<string>();
 
-  private files: Array<FileUploadModel> = [];
+  files: Array<FileUploadModel> = [];
 
   constructor(private readonly http: HttpClient) { }
 

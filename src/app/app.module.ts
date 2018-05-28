@@ -9,9 +9,13 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatIconModule, MatProgressBarModule, MatPaginatorModule, MatSortModule, MatTableDataSource } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatProgressBarModule, MatPaginatorModule, MatSortModule, MatTableDataSource,
+  MatFormFieldModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatCardModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
-
+import { MatTableModule } from '@angular/material';
 
 import { WindowService } from './services/window.service';
 import { NavigationService } from './services/navigation.service';
@@ -29,6 +33,7 @@ import { CreateNewServerComponent } from './create-new-server/create-new-server.
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
 import { TableViewComponent } from './table-view/table-view.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,8 @@ import { TableViewComponent } from './table-view/table-view.component';
     ManagingControlButtonsComponent,
     CreateNewServerComponent,
     MaterialFileUploadComponent,
-    TableViewComponent
+    TableViewComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -51,12 +57,17 @@ import { TableViewComponent } from './table-view/table-view.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatTableModule,
     MatButtonModule,
     MatIconModule,
     MatProgressBarModule,
     MatPaginatorModule,
     MatSortModule,
-    CdkTableModule
+    CdkTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatCardModule
   ],
   providers: [WindowService, NavigationService, VirtualMachineService, MessageService, StateManagingService],
   bootstrap: [AppComponent]
