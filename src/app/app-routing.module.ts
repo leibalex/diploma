@@ -6,13 +6,15 @@ import {MachineDetailComponent} from './machine-detail/machine-detail.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {CreateNewServerComponent} from './create-new-server/create-new-server.component';
 import { TableViewComponent } from './table-view/table-view.component';
+import {CreateServerComponent} from './create-server/create-server.component';
 
 const routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'user-account', component: TableViewComponent},
   {path: 'detail/:id', component: MachineDetailComponent},
-  {path: 'create', component: CreateNewServerComponent}
+  {path: 'create', component: CreateServerComponent},
+  {path: 'sosi', component: CreateServerComponent}
 ];
 
 @NgModule({

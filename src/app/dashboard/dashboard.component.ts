@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {VirtualMachineService } from '../services/virtual-machine.service';
-import { VirtualMachine } from '../../models/virtual-machine';
+import { Server } from '../../models/virtual-machine';
 import { Router } from '@angular/router';
 
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  servers: VirtualMachine[] = [];
+  servers: Server[] = [];
   listOfKeys = [];
 
   constructor(private readonly vmService: VirtualMachineService,

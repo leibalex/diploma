@@ -8,27 +8,28 @@
   <div class="example-container mat-elevation-z8">
     <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index"> {{i + 1}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="userId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> UserId </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.userId}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="hostId">
         <mat-header-cell *matHeaderCellDef mat-sort-header> HostId </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.hostId}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{getDate(row.created)}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Created </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onServerSelect(row.id)">
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onServerSelect(row.id)"
+        [ngClass]="{'error-status': row.status === 'ERROR'}">
       </mat-row>
     </mat-table>
 

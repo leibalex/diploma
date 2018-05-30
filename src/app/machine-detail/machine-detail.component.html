@@ -5,11 +5,20 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading">{{machine.id}}</h4>
-      <p>{{machine.userId}}</p>
-      <p>{{machine.hostId}}</p>
+      <p>id: {{machine.id}}</p>
+      <p>Name: {{machine.name}}</p>
+      <p>Status: {{machine.status}}</p>
+      <p>Created: {{printDate(machine.created)}}</p>
+      <p>Last updated: {{printDate(machine.updated)}}</p>
+    </div>
+    <div class="media-body" *ngIf="isFull">
+      <p>Uuid: {{printData(machine.uuid)}}</p>
+      <p>IPv4: {{printData(machine.accessIPv4)}}</p>
+      <p>IPv6: {{printData(machine.accessIPv4)}}</p>
+      <p>Tenant id{{printData(machine.tenantId)}}</p>
     </div>
   </div>
-  <app-managing-control-buttons [machine]="machine"></app-managing-control-buttons>
+  <app-managing-control-buttons [machine]="machine" (onToogle)="onToogle()"></app-managing-control-buttons>
   <div style="text-align: center">
     <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
   </div>

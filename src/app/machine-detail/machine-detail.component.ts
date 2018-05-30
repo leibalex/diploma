@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VirtualMachine } from '../../models/virtual-machine';
+import { Server } from '../../models/virtual-machine';
 import { ActivatedRoute } from '@angular/router';
 import { VirtualMachineService } from '../services/virtual-machine.service';
 
@@ -10,7 +10,8 @@ import { VirtualMachineService } from '../services/virtual-machine.service';
 })
 export class MachineDetailComponent implements OnInit {
 
-  machine: VirtualMachine;
+  machine: Server;
+  isFull = false;
 
   constructor(private readonly vmService: VirtualMachineService,
               private readonly route: ActivatedRoute) { }
@@ -20,8 +21,30 @@ export class MachineDetailComponent implements OnInit {
   }
 
   getMachine(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.vmService.getById(id).subscribe(machine => this.machine = machine);
+  }
+
+  printData(value: any): string {
+    return value ? value.toString() : '-';
+  }
+
+  printDate(value: string): string {
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+      timezone: 'UTC',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    };
+    return new Date(value).toLocaleString('en-US', options);
+  }
+
+  onToogle(): void {
+    this.isFull = !this.isFull;
   }
 
   onFileComplete(data: any) {

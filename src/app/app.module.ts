@@ -13,7 +13,8 @@ import { MatButtonModule, MatIconModule, MatProgressBarModule, MatPaginatorModul
   MatFormFieldModule,
   MatInputModule,
   MatProgressSpinnerModule,
-  MatCardModule} from '@angular/material';
+  MatCardModule,
+  MatStepperModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material';
 
@@ -34,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
 import { TableViewComponent } from './table-view/table-view.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { CreateServerComponent } from './create-server/create-server.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     CreateNewServerComponent,
     MaterialFileUploadComponent,
     TableViewComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CreateServerComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule
   ],
   providers: [WindowService, NavigationService, VirtualMachineService, MessageService, StateManagingService],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, DoCheck, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import { VirtualMachine } from '../../models/virtual-machine';
+import { Server } from '../../models/virtual-machine';
 import { VirtualMachineService } from '../services/virtual-machine.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-table-view',
@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 
 export class TableViewComponent implements OnInit, AfterViewInit {
 
-  dataSource: MatTableDataSource<VirtualMachine> = new MatTableDataSource();
+  dataSource: MatTableDataSource<Server> = new MatTableDataSource<Server>();
   displayedColumns = ['id', 'userId', 'hostId', 'status'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -24,10 +24,12 @@ export class TableViewComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.vmService.getServers().subscribe((data) => {
       setTimeout(() => {
+        console.dir(data);
         this.dataSource.data = data;
+        console.dir(this.dataSource.data);
       }, 2000);
       console.log(`DataSource: ${this.dataSource}`);
-      console.dir(this.dataSource);
+
     }, (error => console.log(error)));
   }
 
@@ -38,6 +40,18 @@ export class TableViewComponent implements OnInit, AfterViewInit {
 
   onServerSelect(id: number) {
     this.router.navigateByUrl(`detail/${id}`);
+  }
+
+  getDate(value: string): string {
+    const options = {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    };
+    return new Date(value).toLocaleString('en-US', options);
   }
 
   applyFilter(value: string) {

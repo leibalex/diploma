@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { VirtualMachineService } from '../services/virtual-machine.service';
 
 @Component({
@@ -15,8 +15,9 @@ export class ManagingControlButtonsComponent implements OnInit {
   ngOnInit() {
   }
 
-  run(): void {
-
+  @Output() onToogle = new EventEmitter<any>();
+  toogle() {
+    this.onToogle.emit();
   }
 
   onDelete(): void {

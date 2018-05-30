@@ -1,40 +1,30 @@
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { VirtualMachine } from '../../models/virtual-machine';
-import { VIRTUALMACHINES } from '../../models/virtual-machine-mock-data';
+import { Server } from '../../models/virtual-machine';
+import { SERVERS } from '../../models/virtual-machine-mock-data';
 import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class VirtualMachineService {
-  servers = VIRTUALMACHINES;
+  servers = SERVERS;
   constructor(private httpClient: HttpClient) {}
 
-  getServers(): Observable<VirtualMachine[]> {
+  getServers(): Observable<Server[]> {
     console.log(...this.servers);
       return of(this.servers);
   }
 
-  getById(id: number): Observable<VirtualMachine> {
+  getById(id: string): Observable<Server> {
     return of(this.servers.find(machine => machine.id === id));
   }
 
-  deleteById(id: number): Observable<VirtualMachine[]> {
-    this.servers = this.servers.filter((server) => server.id !== id)
+  deleteById(id: string): Observable<Server[]> {
+    this.servers = this.servers.filter((server) => server.id !== id);
     return of(this.servers);
   }
 
   create(name: string, imageRef: string, flavorRef: string): Observable<any> {
-    const newServer: VirtualMachine = {
-      id: 6,
-      userId: name,
-      hostId: imageRef,
-      accessIPv4: '1',
-      accessIPv6: '2',
-      status: false
-    };
-    this.servers = [...this.servers, newServer];
-    console.log(...this.servers);
 
     return of(this.servers);
   }

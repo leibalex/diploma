@@ -7,12 +7,12 @@ export class NavigationService {
       link: 'home'
     },
     {
-      name: 'User Account',
+      name: 'Dashboard',
       link: 'user-account',
     },
     {
-      name: 'Log in/Register',
-      link: 'login'
+      name: 'Create new Server',
+      link: 'create'
     },
   ];
 
